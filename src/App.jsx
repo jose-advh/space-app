@@ -4,6 +4,9 @@ import Cabecera from "./components/Cabecera"
 import BarraLateral from "./components/BarraLateral"
 import Banner from "./components/Banner"
 import Galeria from "./components/Galeria"
+import fotos from "./fotos.json"
+import { useState } from "react"
+import ModalZoom from "./components/ModalZoom"
 
 const FondoGradiente = styled.div`
   background: linear-gradient(175deg, #041833 4.16%, #04244F 48%, #154580 96.76%);
@@ -34,7 +37,27 @@ const ContenidoGaleria = styled.section`
 
 
 
-function App() {
+const App = () => {
+
+  const [fotosDeGaleria, setFotosDeGaleria] = useState(fotos)
+  const [fotoSeleccionada, setFotoSeleccionada] = useState(null)
+
+  const alAlternarFavoritos = (foto) => {
+
+    if (foto.id === fotoSeleccionada?.id) {
+      setFotoSeleccionada({
+        ...fotoSeleccionada,
+        favorita: !foto.favorita
+      })
+    }
+
+    setFotosDeGaleria(fotosDeGaleria.map(fotoDeGaleria => {
+      return {
+        ...fotoDeGaleria,
+        favorita: fotoDeGaleria.id === foto.id ? !foto.favorita : foto.favorita
+      }
+    }))
+  }
 
   return (
     <>
@@ -46,10 +69,19 @@ function App() {
             <BarraLateral />
             <ContenidoGaleria>
               <Banner titulo="La galería más completa del espacio" bgI="img/banner.png"/>
-              <Galeria />
+              <Galeria 
+                fotos={fotosDeGaleria} 
+                alSeleccionarFoto={foto => setFotoSeleccionada(foto)}
+                alAlternarFavoritos={alAlternarFavoritos}
+              />
             </ContenidoGaleria>
           </MainContainer>
         </AppContainer>
+        <ModalZoom 
+          foto={fotoSeleccionada} 
+          alCerrar={() => setFotoSeleccionada(null)} 
+          alAlternarFavoritos={alAlternarFavoritos}
+          />
       </FondoGradiente>
     </>
   )
