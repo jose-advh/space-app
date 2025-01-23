@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import fotos from "../../fotos.json"
 
 
 const ContainerEstilizado = styled.div`
@@ -36,11 +37,16 @@ const Icono = styled.img`
 
 const CampoTexto = (props) => {
 
-    const { icono, placeholder, setBusqueda, busqueda } = props
-    console.log('Busqueda:', setBusqueda)
+
+    const { icono, placeholder, setBusqueda, busqueda, filtrarFotos, setFotosDeGaleria } = props
+
 
     const manejarCambio = (e) => {
-        setBusqueda(e.target.value.toLowerCase());
+        setBusqueda(e.target.value)
+        console.log(e.target.value)
+        filtrarFotos()
+
+
     };
 
 
@@ -50,7 +56,7 @@ const CampoTexto = (props) => {
                 type="text" 
                 placeholder={placeholder} 
                 value={busqueda} 
-                onChange={manejarCambio} 
+                onChange={manejarCambio}
             />
             <IconoLupa>
                 <Icono src={`iconos/${icono}.png`} alt="Icono de lupa" />

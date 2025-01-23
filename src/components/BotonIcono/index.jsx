@@ -12,6 +12,12 @@ const BotonIcono = styled.button`
     img {
         width: 16px !important;
     }
+
+    .close {
+        top: 11%;
+        right: 27%;
+        position: fixed;
+    }
 `
 
 export default BotonIcono

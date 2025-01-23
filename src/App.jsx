@@ -42,6 +42,8 @@ const App = () => {
   const [fotosDeGaleria, setFotosDeGaleria] = useState(fotos)
   const [fotoSeleccionada, setFotoSeleccionada] = useState(null)
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('Todas')
+  const [busqueda, setBusqueda] = useState('')
+
 
   const alAlternarFavoritos = (foto) => {
 
@@ -63,12 +65,23 @@ const App = () => {
   const imagenesFiltradas = categoriaSeleccionada === 'Todas' 
   ? fotos : fotos.filter(img => img.categoria === categoriaSeleccionada);
 
+  const filtrarFotos = () => {
+    setCategoriaSeleccionada(busqueda); 
+  };
+
+
+
   return (
     <>
       <FondoGradiente>
         <GlobalStyles />
         <AppContainer>
-        <Cabecera />
+        <Cabecera 
+          busqueda={busqueda} 
+          setBusqueda={setBusqueda} 
+          filtrarFotos={filtrarFotos} 
+          setFotosDeGaleria={setFotosDeGaleria} 
+          />
           <MainContainer>
             <BarraLateral />
             <ContenidoGaleria>

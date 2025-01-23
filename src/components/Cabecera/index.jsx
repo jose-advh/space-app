@@ -1,10 +1,7 @@
 import styled from "styled-components"
 import CampoTexto from "../CampoTexto"
-import { useState } from "react"
 
-const Cabecera = () => {
-
-    const [busqueda, setBusqueda] = useState('')
+const Cabecera = (props) => {   
 
     const HeaderEstilizado = styled.header`
         display: flex;
@@ -18,8 +15,10 @@ const Cabecera = () => {
             <CampoTexto 
                 icono="search" 
                 placeholder="¿Qué estás buscando?" 
-                setBusqueda={setBusqueda}
-                busqueda={busqueda}
+                setBusqueda={props.setBusqueda}
+                busqueda={props.busqueda}
+                filtrarFotos={props.filtrarFotos}
+                setFotosDeGaleria={props.setFotosDeGaleria}
             />
         </HeaderEstilizado>
     )
