@@ -39,15 +39,18 @@ const CampoTexto = (props) => {
     const { icono, placeholder, setBusqueda, busqueda } = props
     console.log('Busqueda:', setBusqueda)
 
+    const manejarCambio = (e) => {
+        setBusqueda(e.target.value.toLowerCase());
+    };
+
 
     return (
         <ContainerEstilizado>
             <InputEstilizado 
                 type="text" 
                 placeholder={placeholder} 
-                onChange={(e) => setBusqueda(e.target.value.toLowerCase())
-                } 
                 value={busqueda} 
+                onChange={manejarCambio} 
             />
             <IconoLupa>
                 <Icono src={`iconos/${icono}.png`} alt="Icono de lupa" />

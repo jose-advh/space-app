@@ -42,7 +42,6 @@ const App = () => {
   const [fotosDeGaleria, setFotosDeGaleria] = useState(fotos)
   const [fotoSeleccionada, setFotoSeleccionada] = useState(null)
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('Todas')
-  const [busqueda, setBusqueda] = useState('')
 
   const alAlternarFavoritos = (foto) => {
 
@@ -69,7 +68,7 @@ const App = () => {
       <FondoGradiente>
         <GlobalStyles />
         <AppContainer>
-        <Cabecera setBusqueda={setBusqueda} busqueda={busqueda} />
+        <Cabecera />
           <MainContainer>
             <BarraLateral />
             <ContenidoGaleria>
