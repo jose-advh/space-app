@@ -16,16 +16,16 @@ const ImagenContainer = styled.article`
     display: flex;
     flex-wrap: wrap;
 `
-
-const Galeria = ({fotos = [], alSeleccionarFoto, alAlternarFavoritos}) => {
+const Galeria = ({alSeleccionarFoto, alAlternarFavoritos, imagenesFiltradas, setCategoriaSeleccionada}) => {
     return (
         <>
-            <Tag />
+                <Tag setCategoriaSeleccionada={setCategoriaSeleccionada} />
             <GaleriaContainer>
                 <SeccionFluida>
                     <Titulo>Navegue por la galería</Titulo>
                     <ImagenContainer>
-                        {fotos.map(foto => {
+                        {imagenesFiltradas.map(foto => {
+                            console.log(foto)
                             return <Imagen 
                                 alAlternarFavoritos={alAlternarFavoritos}
                                 alSolicitarZoom={alSeleccionarFoto}

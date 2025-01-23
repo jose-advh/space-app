@@ -26,15 +26,21 @@ const ParrafoEstilizado = styled.p`
     font-size: 24px;
     color: #D9D9D9;
 `
-
-const Tag = () => {
+const Tag = ( {setCategoriaSeleccionada} ) => {
     return (
         <>
             <TagContainer>
                 <ParrafoEstilizado>Busque por tags:</ParrafoEstilizado>
 
                 {tags.map(tag => {
-                    return <TagEstilizado key={tag.id}>{tag.titulo}</TagEstilizado>
+                    return (
+                        <TagEstilizado 
+                            key={tag.titulo}
+                            onClick={() => setCategoriaSeleccionada(tag.titulo)}
+                            >
+                                {tag.titulo}
+                        </TagEstilizado>
+                    )
                 })}
             </TagContainer>
 

@@ -75,7 +75,7 @@ const Imagen = ({ foto, expandida = false, alSolicitarZoom, alAlternarFavoritos 
 
     }
 `
-const iconoFavorito= foto.favorita ? "/iconos/favorito-activo.png" :"/iconos/favorito.png"   
+const iconoFavorito= foto.favorita ? "/iconos/favorito-activo.png" : "/iconos/favorito.png"   
 
     
     return (

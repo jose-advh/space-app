@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import CampoTexto from "../CampoTexto"
 
-const Cabecera = () => {
+const Cabecera = (props) => {
 
     const HeaderEstilizado = styled.header`
         display: flex;
@@ -12,7 +12,12 @@ const Cabecera = () => {
     return (
         <HeaderEstilizado>
             <img src="img/logo.png" alt="Logo de Space-App" />
-            <CampoTexto icono="search" placeholder="¿Qué estás buscando?"/>
+            <CampoTexto 
+                icono="search" 
+                placeholder="¿Qué estás buscando?" 
+                setBusqueda={props.setBusqueda}
+                busqueda={props.busqueda}
+            />
         </HeaderEstilizado>
     )
 }
